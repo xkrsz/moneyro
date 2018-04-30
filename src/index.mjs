@@ -1,9 +1,5 @@
-'use strict'
+'use strict';
 
-import Wallet from './Wallet';
-
-const wallet = new Wallet({
-
-});
-
-wallet._request('get_balance');
+export { default as Wallet } from './Wallet';
+export { default as Daemon } from './Daemon';
+export { default as RPC } from './RPC';
