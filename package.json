@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "Krzysztof Kraszewski <krzysztof@kraszew.ski>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "got": "^8.3.0",
+    "lodash": "^4.17.10"
+  }
 }
