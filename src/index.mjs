@@ -1,5 +1,13 @@
 'use strict';
 
-export { default as Wallet } from './Wallet';
-export { default as Daemon } from './Daemon';
-export { default as RPC } from './RPC';
+import Wallet from './Wallet';
+import Daemon from './Daemon';
+import RPC from './RPC';
+import * as daemonMethods from './daemonMethods';
+
+export {
+  Wallet,
+  Daemon,
+  RPC,
+  daemonMethods
+};
