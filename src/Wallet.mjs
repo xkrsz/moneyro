@@ -1,43 +1,28 @@
 'use strict';
 
-import got from 'got';
-import _ from 'lodash';
+import RPC from './RPC';
 
-export default class Wallet {
+export default class Wallet extends RPC {
 
-  hostname = '127.0.0.1';
-  port = 18082;
   username;
   password;
 
-  get apiUrl() { return `http://${this.hostname}:${this.port}/json_rpc`; }
+  constructor(options = {}) {
 
-  constructor({
-    hostname = '127.0.0.1',
-    port = 18082,
-    username = '',
-    password = '',
-  } = {}) {
-
-    this.hostname = hostname;
-    this.port = port;
+    const {
+      hostname = '127.0.0.1',
+      port = 18082,
+      username = '',
+      password = '',
+    } = options;
+    super({ hostname, port});
     this.username = username;
     this.password = password;
   }
 
-  async _request(method, params = {}) {
+  _getOptions(method, params = {}) {
 
-    let options = {
-      forever: true,
-      json: {
-        jsonrpc: '2.0',
-        id: '0',
-        method: method,
-      }
-    };
-
-    if (!_.isEmpty(params)) options.json.params = params;
-
+    let options = super._getOptions(method, params);
     if (this.username !== '' && this.password !== '') {
       options.auth = {
         user: this.username,
@@ -46,7 +31,7 @@ export default class Wallet {
       };
     }
 
-    return await got.post(this.apiUrl, options);
+    return options;
   }
 
 }
