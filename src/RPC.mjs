@@ -37,7 +37,23 @@ export default class RPC {
 
   async _request(method, params = {}) {
 
-    return await got.post(this.apiUrl, this._getOptions(method, params));
+    const response = await got.post(this.apiUrl, this._getOptions(method, params));
+
+    switch (response.statusCode) {
+      case 200:
+        const result = response.body.result;
+        if (_.isObject(result)) {
+          return this._keysToCamelCase(result);
+        }
+
+        return result;
+      default:
+        throw new Error('Received negative response from server.');
+    }
+  }
+
+  _keysToCamelCase(object) {
+    return _.mapKeys(object, (value, key) => _.camelCase(key));
   }
 
 }
