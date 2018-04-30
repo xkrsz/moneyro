@@ -8,7 +8,7 @@ const daemon = new Daemon({
 
 (async () => {
   try {
-    const response = await daemon._request('get_info');
+    const response = await daemon.getBlockCount();
     console.log(response);
   } catch (err) {
     console.error(err);
