@@ -9,6 +9,14 @@
   "keywords": ["monero", "rpc", "api", "node", "js", "nodejs", "node.js", "crypto"],
   "author": "Krzysztof Kraszewski <krzysztof@kraszew.ski>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krszwsk/moneyro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/krszwsk/moneyro/issues"
+  },
+  "homepage": "https://github.com/krszwsk/moneyro#readme",
   "dependencies": {
     "got": "^8.3.0",
     "lodash": "^4.17.10"
