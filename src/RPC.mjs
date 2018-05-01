@@ -5,6 +5,11 @@ import _ from 'lodash';
 
 export default class RPC {
 
+  /**
+   * @typedef {Object} BaseRPCResponse
+   * @property {string} status - General RPC error code. "OK" means everything looks good.
+   */
+
   hostname = '127.0.0.1';
   port;
 

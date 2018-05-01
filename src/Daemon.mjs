@@ -21,11 +21,6 @@ export default class Daemon extends RPC {
   }
 
   /**
-   * @typedef {Object} BaseRPCResponse
-   * @property {string} status - General RPC error code. "OK" means everything looks good.
-   */
-
-  /**
    * @typedef {BaseRPCResponse} GetBlockCountResponse
    * @property {int} count - Block count.
    */
