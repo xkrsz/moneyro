@@ -3,8 +3,8 @@
 // Definition of all wallet methods: https://getmonero.org/resources/developer-guides/wallet-rpc.html
 
 export const GET_BALANCE = 'getbalance';
-export const GETADDRESS = 'getaddress';
-export const GETHEIGHT = 'getheight';
+export const GET_ADDRESS = 'getaddress';
+export const GET_HEIGHT = 'getheight';
 export const TRANSFER = 'transfer';
 export const TRANSFER_SPLIT = 'transfer_split';
 export const SWEEP_DUST = 'sweep_dust';
