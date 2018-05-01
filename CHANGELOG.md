@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Wallet method definitions.
+- Wallet.getBalance()
+- Wallet.getAddress()
+- Wallet.getHeight()
+- Wallet.transfer()
+- Wallet example usage.
 
 ### Changed
 - Rename `RPC._request` to `RPC.request`, as it can be used for not implemented RPC methods.
