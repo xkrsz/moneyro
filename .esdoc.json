@@ -3,8 +3,7 @@
   "destination": "./docs",
   "includes": ["\\.mjs$"],
   "plugins": [
-    {
-      "name": "esdoc-standard-plugin"
-    }
+    { "name": "esdoc-standard-plugin" },
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}}
   ]
 }

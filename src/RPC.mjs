@@ -5,12 +5,9 @@ import _ from 'lodash';
 
 export default class RPC {
 
-  /**
-   * @typedef {Object} BaseRPCResponse
-   * @property {string} status - General RPC error code. "OK" means everything looks good.
-   */
-
+  /** @type {string} */
   hostname = '127.0.0.1';
+  /** @type {uint} */
   port;
 
   get apiUrl() { return `http://${this.hostname}:${this.port}/json_rpc`; }
@@ -24,6 +21,13 @@ export default class RPC {
     this.port = port;
   }
 
+  /**
+   *
+   * @param {string} method
+   * @param {Object} [params]
+   * @return {{json: boolean, body: {jsonrpc: string, id: string, method: string, [params]: Object}}}
+   * @private
+   */
   _getOptions(method, params = {}) {
 
     let options = {
