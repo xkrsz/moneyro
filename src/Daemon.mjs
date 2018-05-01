@@ -35,7 +35,7 @@ export default class Daemon extends RPC {
    */
   async getBlockCount() {
 
-    return await this._request(methods.GET_BLOCK_COUNT);
+    return await this.request(methods.GET_BLOCK_COUNT);
   }
 
   /**
@@ -46,7 +46,7 @@ export default class Daemon extends RPC {
    */
   async onGetBlockHash(blockHeight) {
 
-    return await this._request(methods.ON_GET_BLOCK_HASH, [blockHeight]);
+    return await this.request(methods.ON_GET_BLOCK_HASH, [blockHeight]);
   }
 
   /**
@@ -68,7 +68,7 @@ export default class Daemon extends RPC {
    */
   async getBlockTemplate(walletAddress, reserveSize) {
 
-    return await this._request(methods.GET_BLOCK_TEMPLATE, {
+    return await this.request(methods.GET_BLOCK_TEMPLATE, {
       wallet_address: walletAddress,
       reserve_size: reserveSize,
     });

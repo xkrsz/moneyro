@@ -35,7 +35,14 @@ export default class RPC {
     return options;
   }
 
-  async _request(method, params = {}) {
+  /**
+   * Sends a request to defined host.
+   *
+   * @param {string} method - RPC method name.
+   * @param {Object} params - Additional parameters.
+   * @returns {Promise<*>}
+   */
+  async request(method, params = {}) {
 
     const response = await got.post(this.apiUrl, this._getOptions(method, params));
 
@@ -52,6 +59,13 @@ export default class RPC {
     }
   }
 
+  /**
+   * Converts object keys to camelCase.
+   *
+   * @param {Object} object
+   * @returns {Object}
+   * @private
+   */
   _keysToCamelCase(object) {
     return _.mapKeys(object, (value, key) => _.camelCase(key));
   }
