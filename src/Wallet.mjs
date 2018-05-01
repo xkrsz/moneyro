@@ -7,15 +7,14 @@ export default class Wallet extends RPC {
   username;
   password;
 
-  constructor(options = {}) {
+  constructor({
+    hostname = '127.0.0.1',
+    port = 18082,
+    username = '',
+    password = ''
+  } = {}) {
 
-    const {
-      hostname = '127.0.0.1',
-      port = 18082,
-      username = '',
-      password = '',
-    } = options;
-    super({ hostname, port});
+    super({ hostname, port });
     this.username = username;
     this.password = password;
   }
