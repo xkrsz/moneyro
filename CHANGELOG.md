@@ -6,13 +6,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.0] - 2018-05-03
+### Added
+- `Wallet.create()`
+- `Wallet.open()`
+- `Wallet.stop()`
+- `Wallet.getPayments()`
+- Deep converting key names in `RPC._keysToCamelCase()` method.
+
 ## [1.1.0] - 2018-05-01
 ### Added
 - Wallet method definitions.
-- Wallet.getBalance()
-- Wallet.getAddress()
-- Wallet.getHeight()
-- Wallet.transfer()
+- `Wallet.getBalance()`
+- `Wallet.getAddress()`
+- `Wallet.getHeight()`
+- `Wallet.transfer()`
 - Wallet example usage.
 
 ### Changed
