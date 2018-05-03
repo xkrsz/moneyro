@@ -123,6 +123,7 @@ export default class Wallet extends RPC {
     getTxKey = false,
     doNotRelay = false,
   }) {
+
     const params = {
       destinations,
       fee: 0,
@@ -136,6 +137,86 @@ export default class Wallet extends RPC {
     };
 
     return await this.request(methods.TRANSFER, params);
+  }
+
+  /**
+   * Create a new wallet. You need to have set the
+   * argument "–wallet-dir" when launching monero-wallet-rpc to make this work.
+   * 
+   * @param {string} fileName - File name.
+   * @param {string} password - Password.
+   * @param {string} language Language for your wallets' seed.
+   * 
+   * @returns {Promise<{}>}
+   */
+  async create(fileName, password, language) {
+
+    const params = {
+      filename: fileName,
+      password,
+      language,
+    };
+
+    return await this.request(methods.CREATE_WALLET, params);
+  }
+
+  /**
+   * Open a wallet. You need to have set the
+   * argument "–wallet-dir" when launching monero-wallet-rpc to make this work.
+   * 
+   * @param {string} fileName - File name.
+   * @param {string} password - Password.
+   * 
+   * @returns {Promise<{}>}
+   */
+  async open(fileName, password) {
+
+    const params = {
+      fileName: filename,
+      password,
+    };
+
+    return await this.request(methods.OPEN_WALLET, params);
+  }
+
+  /**
+   * Stops the wallet, storing the current state.
+   * 
+   * @returns {Promise<{}>}
+   */
+  async stop() {
+
+    return await this.request(methods.STOP_WALLET);
+  }
+
+  /**
+   * @typedef {Object} Payment
+   * @property {string} paymentId
+   * @property {string} txHash
+   * @property {uint} amount
+   * @property {uint} blockHeight
+   * @property {uint} unlockTime
+   */
+
+  /**
+   * @typedef {Object} GetPaymentsResponse
+   * @property {array<Payment>} payments
+   */
+
+  /**
+   * Get a list of incoming payments using a given payment id.
+   * 
+   * @param paymentId - Payment id.
+   * 
+   * @returns {Promise<GetPaymentsResponse>}
+   */
+  async getPayments(paymentId) {
+
+    const params = {
+      payment_id: paymentId,
+    };
+
+    return await this.request(methods.STORE, params);
   }
 
 }
