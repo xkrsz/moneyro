@@ -76,7 +76,27 @@ export default class RPC {
    * @private
    */
   _keysToCamelCase(object) {
-    return _.mapKeys(object, (value, key) => _.camelCase(key));
+    let camelCaseObject = _.cloneDeep(object);
+
+    if (_.isArray(camelCaseObject)) {
+      
+      return _.map(camelCaseObject, keysToCamelCase);
+    } else {
+
+      camelCaseObject = _.mapKeys(camelCaseObject, (value, key) => {
+        return _.camelCase(key);
+      });
+  
+      return _.mapValues(camelCaseObject, (value) => {
+        if (_.isPlainObject(value)) {
+          return keysToCamelCase(value);
+        } else if (_.isArray(value)) {
+          return _.map(value, keysToCamelCase);
+        } else {
+          return value;
+        }
+      });
+    }
   }
 
 }
