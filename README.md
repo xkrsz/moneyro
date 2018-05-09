@@ -30,7 +30,7 @@ Head to https://getmonero.org/downloads/ and download Command-Line tools for you
 ```
 2. Start wallet RPC client
 ```
-monero-wallet-rpc \
+./monero-wallet-rpc \
   --testnet --rpc-bind-port 18082 \
   --wallet-dir <folder-for-your-wallets> \
   --disable-rpc-login \
