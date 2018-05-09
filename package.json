@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/krszwsk/moneyro#readme",
   "dependencies": {
-    "got": "^8.3.0",
+    "got": "^8.3.1",
     "lodash": "^4.17.10"
   },
   "devDependencies": {

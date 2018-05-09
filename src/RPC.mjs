@@ -25,8 +25,8 @@ export default class RPC {
    *
    * @param {string} method
    * @param {Object} [params]
-   * @return {{json: boolean, body: {jsonrpc: string, id: string, method: string, [params]: Object}}}
-   * @private
+   * @return {Object}
+   * @protected
    */
   _getOptions(method, params = {}) {
 
@@ -53,7 +53,8 @@ export default class RPC {
    */
   async request(method, params = {}) {
 
-    const response = await got.post(this.apiUrl, this._getOptions(method, params));
+    const options = this._getOptions(method, params);
+    const response = await got.post(this.apiUrl, options);
 
     switch (response.statusCode) {
       case 200:
@@ -79,19 +80,19 @@ export default class RPC {
     let camelCaseObject = _.cloneDeep(object);
 
     if (_.isArray(camelCaseObject)) {
-      
-      return _.map(camelCaseObject, keysToCamelCase);
+
+      return _.map(camelCaseObject, this._keysToCamelCase);
     } else {
 
       camelCaseObject = _.mapKeys(camelCaseObject, (value, key) => {
         return _.camelCase(key);
       });
-  
+
       return _.mapValues(camelCaseObject, (value) => {
         if (_.isPlainObject(value)) {
-          return keysToCamelCase(value);
+          return this._keysToCamelCase(value);
         } else if (_.isArray(value)) {
-          return _.map(value, keysToCamelCase);
+          return _.map(value, this._keysToCamelCase);
         } else {
           return value;
         }

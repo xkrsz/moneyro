@@ -24,11 +24,7 @@ export default class Wallet extends RPC {
 
     let options = super._getOptions(method, params);
     if (this.username !== '' && this.password !== '') {
-      options.auth = {
-        user: this.username,
-        pass: this.password,
-        sendImmediately: false,
-      };
+      // TODO: implement digest auth
     }
 
     return options;
@@ -143,16 +139,16 @@ export default class Wallet extends RPC {
    * Create a new wallet. You need to have set the
    * argument "–wallet-dir" when launching monero-wallet-rpc to make this work.
    *
-   * @param {string} fileName - File name.
+   * @param {string} filename - File name.
    * @param {string} password - Password.
-   * @param {string} language Language for your wallets' seed.
+   * @param {string} [language] Language for your wallets' seed.
    *
    * @returns {Promise<{}>}
    */
-  async create(fileName, password, language) {
+  async create(filename, password, language = 'English') {
 
     const params = {
-      filename: fileName,
+      filename: filename,
       password,
       language,
     };
@@ -164,15 +160,15 @@ export default class Wallet extends RPC {
    * Open a wallet. You need to have set the
    * argument "–wallet-dir" when launching monero-wallet-rpc to make this work.
    *
-   * @param {string} fileName - File name.
+   * @param {string} filename - File name.
    * @param {string} password - Password.
    *
    * @returns {Promise<{}>}
    */
-  async open(fileName, password) {
+  async open(filename, password) {
 
     const params = {
-      fileName: filename,
+      filename: filename,
       password,
     };
 
