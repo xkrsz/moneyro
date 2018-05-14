@@ -95,3 +95,84 @@ Type: `string`
 
 ###### password
 Type: `string`
+
+
+#### create(filename, password, [language])
+Creates a new wallet. You need to have set the
+argument "–wallet-dir" when launching monero-wallet-rpc to make this work.
+
+##### filename
+Type: `string`
+
+##### password
+Type: `string`
+
+##### language
+Type: `string`<br>
+Default: `'English'`
+
+
+#### open(filename, password)
+Opens a wallet. You need to have set the
+argument "–wallet-dir" when launching monero-wallet-rpc to make this work.
+
+##### filename
+Type: `string`
+
+##### password
+Type: `string`
+
+#### getBalance()
+
+##### Returns `Promise`:
+###### balance
+Type: `uint`
+
+###### unlockedBalance
+Type: `uint`
+
+#### transfer(options)
+Transfers monero to specified recipient(s).
+
+##### options
+Type: `Object`
+
+###### destinations
+Type: `array<{ amount: uint, address: string }>`
+
+###### mixin
+Type: `uint`
+
+Number of outpouts from the blockchain to mix with (0 means no mixing).
+
+###### unlockTime
+Type: `uint`
+
+Number of blocks before the monero can be spent (0 to not add a lock).
+
+###### priority
+Type: `uint`<br>
+Options: 
+- `0`
+- `1`
+- `2`
+- `3`
+
+###### getTxHex
+Type: `boolean`
+
+###### paymentId
+Type: `string`<br>
+Default: `''`
+
+Random 32-byte/64-character hex string to identify a transaction.
+
+###### getTxKey
+Type: `boolean`<br>
+Default: `false`
+
+###### doNotRelay
+Type: `boolean`<br>
+Default: `false`
+
+### Daemon
